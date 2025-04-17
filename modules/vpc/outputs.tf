@@ -10,6 +10,8 @@ output "subnet_id" {
   value       = aws_subnet.ec2_simple_vpc_subnet.id
 }
 
+# Output the Internet Gateway ID
 output "igw_id" {
+  description = "Internet Gateway ID"
   value = aws_internet_gateway.igw.id
 }

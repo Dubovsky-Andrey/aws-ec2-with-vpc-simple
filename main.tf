@@ -9,6 +9,16 @@ module "vpc" {
   subnet_name       = var.subnet_name
 }
 
+# Call the route table module to create a route table
+module "route_table" {
+  source     = "./modules/route_table"
+  vpc_id     = module.vpc.vpc_id
+  gateway_id = module.vpc.igw_id
+  subnet_id  = module.vpc.subnet_id
+  vpc_name   = var.vpc_name
+}
+
+
 # Call the EC2 module to create an instance with security group
 module "ec2" {
   source = "./modules/ec2"
