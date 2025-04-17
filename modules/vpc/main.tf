@@ -1,11 +1,3 @@
-# Internet Gateway
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.ec2_simple_vpc.id
-  tags = {
-    Name = "${var.vpc_name}-igw"
-  }
-}
-
 # Create a VPC
 resource "aws_vpc" "ec2_simple_vpc" {
   cidr_block = var.cidr_block

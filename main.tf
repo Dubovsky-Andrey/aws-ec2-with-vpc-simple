@@ -18,6 +18,12 @@ module "route_table" {
   vpc_name   = var.vpc_name
 }
 
+module "internet_gateway" {
+  source   = "./modules/internet_gateway"
+  vpc_id   = module.vpc.vpc_id
+  vpc_name = var.vpc_name
+}
+
 
 # Call the EC2 module to create an instance with security group
 module "ec2" {
