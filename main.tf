@@ -24,6 +24,13 @@ module "internet_gateway" {
   vpc_name = var.vpc_name
 }
 
+module "subnet" {
+  source            = "./modules/subnet"
+  vpc_id            = module.vpc.vpc_id
+  subnet_cidr       = var.subnet_cidr
+  availability_zone = var.availability_zone
+  subnet_name       = var.subnet_name
+}
 
 # Call the EC2 module to create an instance with security group
 module "ec2" {
