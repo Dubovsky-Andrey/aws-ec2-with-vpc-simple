@@ -27,9 +27,3 @@ output "public_ip" {
   description = "Public IP address of the created EC2 instance"
   value       = module.ec2.public_ip
 }
-
-# Output the public IP address of the created EC2 instance
-output "public_link" {
-  description = "Public link to site"
-  value       = "http://${module.ec2.public_ip}"
-}
