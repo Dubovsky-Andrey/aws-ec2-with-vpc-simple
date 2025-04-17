@@ -13,8 +13,8 @@ module "vpc" {
 module "route_table" {
   source     = "./modules/route_table"
   vpc_id     = module.vpc.vpc_id
-  gateway_id = module.vpc.igw_id
-  subnet_id  = module.vpc.subnet_id
+  gateway_id = module.internet_gateway.igw_id
+  subnet_id  = module.subnets.subnet_id
   vpc_name   = var.vpc_name
 }
 
@@ -24,7 +24,7 @@ module "internet_gateway" {
   vpc_name = var.vpc_name
 }
 
-module "subnet" {
+module "subnets" {
   source            = "./modules/subnets"
   vpc_id            = module.vpc.vpc_id
   subnet_cidr       = var.subnet_cidr
@@ -38,7 +38,7 @@ module "ec2" {
 
   ami                         = var.ami
   instance_type               = var.instance_type
-  subnet_id                   = module.vpc.subnet_id
+  subnet_id                   = module.subnets.subnet_id
   vpc_id                      = module.vpc.vpc_id
   allowed_cidrs               = var.allowed_cidrs
   instance_name               = var.instance_name

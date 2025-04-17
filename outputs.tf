@@ -19,7 +19,7 @@ output "vpc_id" {
 # Output the Subnet ID from the VPC module
 output "subnet_id" {
   description = "Subnet ID"
-  value       = module.vpc.subnet_id
+  value       = module.subnets.subnet_id
 }
 
 # Output the public IP address of the created EC2 instance
