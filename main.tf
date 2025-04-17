@@ -25,7 +25,7 @@ module "internet_gateway" {
 }
 
 module "subnet" {
-  source            = "./modules/subnet"
+  source            = "./modules/subnets"
   vpc_id            = module.vpc.vpc_id
   subnet_cidr       = var.subnet_cidr
   availability_zone = var.availability_zone
